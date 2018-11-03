@@ -19,3 +19,10 @@ class Post(models.Model):
         return self.title
 
 
+class Client(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    adress = models.TextField()
+
+    def __str__(self):
+        return self.name

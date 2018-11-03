@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+
+{% block plus_header %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'client_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    {% for client in clients %}
+        <div class="post">
+{#            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>#}
+            <h1>{{ client.name }}</h1>
+            <p>{{ client.email }}</p>
+            <p>{{ client.adress|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

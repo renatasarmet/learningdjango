@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Client
 from django.utils import timezone
-from .forms import PostForm
+from .forms import PostForm, ClientForm
 from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
+def initial(request):
+    return render(request, 'blog/initial.html')
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -43,3 +46,21 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def client_list(request):
+    clients = Client.objects.all()
+    return render(request, 'blog/client_list.html', {'clients': clients})
+
+
+@login_required
+def client_new(request):
+    if request.method == "POST":
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            client = form.save()
+            #return redirect('client_list', pk=post.pk)
+            return redirect('client_list')
+    else:
+        form = ClientForm()
+    return render(request, 'blog/client_edit.html', {'form': form})
