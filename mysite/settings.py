@@ -120,3 +120,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+MEDIA_URL = '/media/' #endereço para acessar os arquivos
+
+MEDIA_ROOT = (
+  os.path.join(BASE_DIR, "blog/media") #pasta media para abrigar os arquivos dos usuários
+)
