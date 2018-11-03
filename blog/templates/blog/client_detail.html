@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'client_edit' pk=client.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h1>{{ client.name }}</h1>
+        <p>{{ client.email }}</p>
+        <p>{{ client.adress|linebreaksbr }}</p>
+    </div>
+{% endblock %}

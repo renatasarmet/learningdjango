@@ -12,6 +12,8 @@ urlpatterns = [
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('clients', views.client_list, name='client_list'),
     path('client/new', views.client_new, name='client_new'),
+    path('client/<int:pk>/', views.client_detail, name='client_detail'),
+    path('client/<int:pk>/edit/', views.client_edit, name='client_edit'),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

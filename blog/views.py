@@ -10,13 +10,16 @@ from django.contrib.auth.decorators import login_required
 def initial(request):
     return render(request, 'blog/initial.html')
 
+
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
+
 
 @login_required
 def post_new(request):
@@ -31,6 +34,7 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
 
 @login_required
 def post_edit(request, pk):
@@ -53,14 +57,31 @@ def client_list(request):
     return render(request, 'blog/client_list.html', {'clients': clients})
 
 
+def client_detail(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    return render(request, 'blog/client_detail.html', {'client': client})
+
+
 @login_required
 def client_new(request):
     if request.method == "POST":
         form = ClientForm(request.POST)
         if form.is_valid():
-            client = form.save()
-            #return redirect('client_list', pk=post.pk)
+            form.save()
             return redirect('client_list')
     else:
         form = ClientForm()
+    return render(request, 'blog/client_edit.html', {'form': form})
+
+
+@login_required
+def client_edit(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    if request.method == "POST":
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            client = form.save()
+            return redirect('client_detail', pk=client.pk)
+    else:
+        form = ClientForm(instance=client)
     return render(request, 'blog/client_edit.html', {'form': form})
