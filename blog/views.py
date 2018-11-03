@@ -85,3 +85,10 @@ def client_edit(request, pk):
     else:
         form = ClientForm(instance=client)
     return render(request, 'blog/client_edit.html', {'form': form})
+
+
+@login_required
+def client_remove(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+    client.delete()
+    return redirect('client_list')

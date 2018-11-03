@@ -14,6 +14,6 @@ urlpatterns = [
     path('client/new', views.client_new, name='client_new'),
     path('client/<int:pk>/', views.client_detail, name='client_detail'),
     path('client/<int:pk>/edit/', views.client_edit, name='client_edit'),
-
+    path('client/<pk>/remove/', views.client_remove, name='client_remove'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

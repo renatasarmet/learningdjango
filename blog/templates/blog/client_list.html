@@ -9,6 +9,7 @@
 
 
 {% block content %}
+    <h1>Clientes</h1>
     <table>
     <tr>
         <th>Nome</th>
@@ -16,12 +17,6 @@
         <th>Endereco</th>
     </tr>
     {% for client in clients %}
-{#        <div class="client">#}
-{#            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>#}
-{#            <h1>{{ client.name }}</h1>#}
-{#            <p>{{ client.email }}</p>#}
-{#            <p>{{ client.adress|linebreaksbr }}</p>#}
-{#        </div>#}
         <tr>
             <th><a href="{% url 'client_detail' pk=client.pk %}">{{ client.name }}</a></th>
             <th>{{ client.email }}</th>

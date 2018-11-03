@@ -37,6 +37,10 @@ h1, h2, h3, h4 {
     margin-right: 20px;
 }
 
+#login {
+    font-size: 14pt;
+}
+
 .post {
     margin-bottom: 70px;
 }
