@@ -12,4 +12,4 @@ class PostForm(forms.ModelForm):
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ('name', 'email', 'adress',)
+        fields = ('name', 'email', 'address',)

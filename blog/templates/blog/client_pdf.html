@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>{{ obj.name }}</title>
+    <style>
+        body {
+            background-color: #f7f7f7;
+        }
+        p {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .text-right {
+            text-align: right;
+        }
+        .text-center{
+            text-align: center;
+        }
+  </style>
+</head>
+    <body>
+        <h1 class="text-center">Client Details</h1>
+        <h4 class="text-right">Nº {{ obj.id }}</h4>
+        <p><b>Nome:</b> {{ obj.name }}</p>
+        <p><b>Email:</b> {{ obj.email}}</p>
+        <p><b>Address:</b> {{ obj.address}}</p>
+    </body>
+</html>
+
+

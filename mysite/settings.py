@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_object_actions',
     'blog',
 ]
 
@@ -127,3 +128,5 @@ MEDIA_URL = '/media/' #endereço para acessar os arquivos
 MEDIA_ROOT = (
   os.path.join(BASE_DIR, "blog/media") #pasta media para abrigar os arquivos dos usuários
 )
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

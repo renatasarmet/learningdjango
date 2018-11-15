@@ -3,6 +3,7 @@ from .models import Post, Client
 from django.utils import timezone
 from .forms import PostForm, ClientForm
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 
 
 # Create your views here.
@@ -18,6 +19,14 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+
+    # send_mail(
+    #     'Subject here',
+    #     'Here is the message.',
+    #     'teste@example.com',
+    #     ['renatassmendes@hotmail.com'],
+    #     fail_silently=False,
+    # )
     return render(request, 'blog/post_detail.html', {'post': post})
 
 

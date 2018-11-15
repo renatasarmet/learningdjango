@@ -20,7 +20,7 @@
         <tr>
             <th><a href="{% url 'client_detail' pk=client.pk %}">{{ client.name }}</a></th>
             <th>{{ client.email }}</th>
-            <th>{{ client.adress|linebreaksbr }}</th>
+            <th>{{ client.address|linebreaksbr }}</th>
         </tr>
     {% endfor %}
     </table>
